@@ -24,7 +24,8 @@ const drSayings = [
     "Come back tomorrow, we'll do it properly",
     "Brake step three",
     "Mum rail",
-    "Lets play Locomotive Livery Location"
+    "Lets play Locomotive Livery Location",
+    "All views are my own"
 ];
 
 let bingo = null;
@@ -49,43 +50,44 @@ class Bingo {
         for (let index = 0; index < sayingElements.length; index++) { 
             this.sayings[index] = {"state": null};
         }
-        console.log("Init Saying state " + JSON.stringify(bingo.sayings));
+        console.log("Init Saying state " + JSON.stringify(this.sayings));
         
         drSayings.forEach(function(value, index) {
-            bingo.sayings[index] = {"saying": value, "state": false};
-        });
+            this.sayings[index] = {"saying": value, "state": false};
+        }, this);
 
         // Random locations.
-        console.log("Init Saying state pre sort " + JSON.stringify(bingo.sayings));
+        console.log("Init Saying state pre sort " + JSON.stringify(this.sayings));
         this.sayings.sort(() => Math.random() - 0.5);
-        console.log("Init Saying state post sort" + JSON.stringify(bingo.sayings));
+        console.log("Init Saying state post sort" + JSON.stringify(this.sayings));
         
         // Update markup and attach event listener.
+        this._sayingClicked = this._sayingClicked.bind(this);
         sayingElements.forEach(function(saying) {
-            if (bingo.sayings[saying.dataset.pos -1].state === null) {
+            if (this.sayings[saying.dataset.pos -1].state === null) {
                 saying.innerText = "";
             } else {
-                saying.innerText = bingo.sayings[saying.dataset.pos -1].saying;
+                saying.innerText = this.sayings[saying.dataset.pos -1].saying;
                 console.log("Element add event listener " + saying.dataset.pos);
-                saying.addEventListener('click', bingo._sayingClicked);
+                saying.addEventListener('click', this._sayingClicked);
             }
-        });
+        }, this);
     }
 
     _sayingClicked(saying) {
         console.log("Saying " + saying.target.dataset.pos + " clicked");
         
         // Toggle value.
-        bingo.sayings[saying.target.dataset.pos - 1].state =
-            (bingo.sayings[saying.target.dataset.pos - 1].state !== true);
+        this.sayings[saying.target.dataset.pos - 1].state =
+            (this.sayings[saying.target.dataset.pos - 1].state !== true);
 
-        console.log("Clicked Saying state " + JSON.stringify(bingo.sayings));
+        console.log("Clicked Saying state " + JSON.stringify(this.sayings));
         
-        if (bingo.sayings[saying.target.dataset.pos - 1].state === true) {
+        if (this.sayings[saying.target.dataset.pos - 1].state === true) {
             saying.target.classList.add('said');
             
             // Check bingo.
-            bingo._isBingo();
+            this._isBingo();
         } else {
             console.log("Not bingo :(");
             saying.target.classList.remove('said');            
@@ -96,7 +98,7 @@ class Bingo {
     _isBingo() {
         console.log("isBingo");
         let trueCount = 0;
-        bingo.sayings.forEach(function(saying){
+        this.sayings.forEach(function(saying){
             if (saying.state === true) {
                 trueCount++;
             }
