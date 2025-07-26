@@ -87,7 +87,9 @@ class Bingo {
             // Check bingo.
             bingo._isBingo();
         } else {
+            console.log("Not bingo :(");
             saying.target.classList.remove('said');            
+            document.getElementById('bingo').classList.add('hidden');
         }
     };
 
@@ -101,8 +103,7 @@ class Bingo {
         });
         if (trueCount === drSayings.length) {
             document.getElementById('bingo').classList.remove('hidden');
-        } else {
-            document.getElementById('bingo').classList.add('hidden');
+            console.log("Bingo!");
         }
     }
 }
