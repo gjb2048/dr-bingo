@@ -1,10 +1,30 @@
+/*
+    Copyright (C) 2025 G J Barnard
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
+
 console.log("Bingo");
 
 const drSayings = [
     "Drive it like you stole it",
     "See it, say it, sort it",
     "Tea and biscuits", 
-    "Come back tomorrow, we'll do it properly"
+    "Come back tomorrow, we'll do it properly",
+    "Brake step three",
+    "Mum rail",
+    "Lets play Locomotive Livery Location"
 ];
 
 let bingo = null;
@@ -27,7 +47,7 @@ class Bingo {
 
         // Populate.
         for (let index = 0; index < sayingElements.length; index++) { 
-            this.sayings[index] = {"saying": "", "state": null};
+            this.sayings[index] = {"state": null};
         }
         console.log("Init Saying state " + JSON.stringify(bingo.sayings));
         
@@ -55,18 +75,36 @@ class Bingo {
     _sayingClicked(saying) {
         console.log("Saying " + saying.target.dataset.pos + " clicked");
         
-        // Toggle value, copes with initial null.
-        bingo.sayings[saying.target.dataset.pos - 1] =
-            (bingo.sayings[saying.target.dataset.pos - 1] !== true);
+        // Toggle value.
+        bingo.sayings[saying.target.dataset.pos - 1].state =
+            (bingo.sayings[saying.target.dataset.pos - 1].state !== true);
 
         console.log("Clicked Saying state " + JSON.stringify(bingo.sayings));
         
-        if (bingo.sayings[saying.target.dataset.pos - 1] === true) {
+        if (bingo.sayings[saying.target.dataset.pos - 1].state === true) {
             saying.target.classList.add('said');
+            
+            // Check bingo.
+            bingo._isBingo();
         } else {
             saying.target.classList.remove('said');            
         }
     };
+
+    _isBingo() {
+        console.log("isBingo");
+        let trueCount = 0;
+        bingo.sayings.forEach(function(saying){
+            if (saying.state === true) {
+                trueCount++;
+            }
+        });
+        if (trueCount === drSayings.length) {
+            document.getElementById('bingo').classList.remove('hidden');
+        } else {
+            document.getElementById('bingo').classList.add('hidden');
+        }
+    }
 }
 
 function drInit() {
