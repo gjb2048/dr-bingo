@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'railwayregular';
+    src: url('./Railway-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'railwayregular';
+}
+
+.saying {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100px;
+    min-width: 100px;
+}
