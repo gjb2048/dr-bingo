@@ -39,7 +39,8 @@ body {
     border: 2px dotted var(--dr-main-colour);
 }
 
-h1 {
+h1,
+h2 {
     color: var(--dr-main-colour);
     text-align: center;
 }
@@ -50,11 +51,13 @@ h1 {
 
 .saying {
     align-items: center;
+    cursor: default;
     display: flex;
     font-size: 1.5rem;
     justify-content: center;
     min-height: 100px;
     text-align: center;
+    user-select: none;
 }
 
 .hidden {

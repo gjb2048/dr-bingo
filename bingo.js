@@ -35,6 +35,8 @@ class Bingo {
     sayings = null;
 
     bingoMessageElement = null;
+    countMessageElement = null;
+    count = 0;
 
     // Init.
     constructor() {
@@ -63,8 +65,9 @@ class Bingo {
         this.sayings.sort(() => Math.random() - 0.5);
         console.log("Init Saying state post sort" + JSON.stringify(this.sayings));
 
-        // Bingo message element.
+        // Message elements.
         this.bingoMessageElement = document.getElementById('bingo');
+        this.countMessageElement = document.getElementById('count');
 
         // Update markup and attach event listener.
         this._sayingClicked = this._sayingClicked.bind(this);
@@ -95,9 +98,12 @@ class Bingo {
             this._isBingo();
         } else {
             console.log("Not bingo :(");
-            saying.target.classList.remove('said');            
+            saying.target.classList.remove('said');
             this.bingoMessageElement.classList.add('hidden');
+            this.count--;
         }
+
+        this.countMessageElement.innerText = this.count
     };
 
     _isBingo() {
@@ -108,6 +114,9 @@ class Bingo {
                 trueCount++;
             }
         });
+
+        this.count = trueCount;
+
         if (trueCount === drSayings.length) {
             this.bingoMessageElement.classList.remove('hidden');
             console.log("Bingo!");
