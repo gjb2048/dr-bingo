@@ -1,11 +1,5 @@
 <!doctype html>
-<html>
-<head>
-    <title>Dad Rail Sayings bingo</title>
-    <link rel="stylesheet" type="text/css" href="bootstrap-grid.min.css">
-    <link rel="stylesheet" type="text/css" href="bingo.css">
-    <script src="bingo.js"></script>
-    <!--
+<!--
     Copyright (C) 2025 G J Barnard
 
     This program is free software: you can redistribute it and/or modify
@@ -25,13 +19,21 @@
     and Railway font (Railway_SIL_Open_Font_License.txt).
     
     The image '760D_7762-4_bingo.png' is my copyright, you are permitted to use
-    it within the context of this web page.
-    -->
+    it within the context of this web page.  Or change it for your own image.
+-->
+<html>
+<head>
+    <title>Dad Rail Sayings bingo</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="bingo.css">
+    <!-- Note: Could use modules but that forces server hosting even for localhost because of CORS. -->
+    <script src="bingo_data.js"></script>
+    <script src="bingo.js"></script>
 </head>
 <body>
     <h1>Dad Rail Sayings bingo</h1>
     <div class="bingo container">
-        <!-- 3x8, 4x6, 6x4 grid -->
+        <!-- 3x8, 4x6, 6x4 grid depending on window resolution -->
         <div class="row">
             <div class="col-4 col-sm-3 col-md-2 saying" data-pos="1">
                 Placeholder

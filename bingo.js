@@ -17,30 +17,20 @@
 
 console.log("Bingo");
 
-const drSayings = [
-    "Drive it like you stole it",
-    "See it, say it, sort it",
-    "Tea and biscuits", 
-    "Come back tomorrow, we'll do it properly",
-    "Brake step three",
-    "Mum rail",
-    "Lets play Locomotive Livery Location",
-    "All views are my own"
-];
-
-let bingo = null;
-
 class Bingo {
     
     sayings = null;
+    drSayings = null;
 
     bingoMessageElement = null;
     countMessageElement = null;
     count = 0;
 
     // Init.
-    constructor() {
+    constructor(sayings) {
         console.log("Bingo constructor");
+
+        this.drSayings = sayings;
     }
 
     init(element) {
@@ -55,9 +45,12 @@ class Bingo {
             this.sayings[index] = {"state": null};
         }
         console.log("Init Saying state " + JSON.stringify(this.sayings));
-        
-        drSayings.forEach(function(value, index) {
-            this.sayings[index] = {"saying": value, "state": false};
+
+        this.drSayings.forEach(function(value, index) {
+            // Prevent more sayings than we have space for.
+            if (index < sayingElements.length) {
+                this.sayings[index] = {"saying": value, "state": false};
+            }
         }, this);
 
         // Random locations.
@@ -103,7 +96,7 @@ class Bingo {
             this.count--;
         }
 
-        this.countMessageElement.innerText = this.count
+        this.countMessageElement.innerText = this.count;
     };
 
     _isBingo() {
@@ -117,15 +110,15 @@ class Bingo {
 
         this.count = trueCount;
 
-        if (trueCount === drSayings.length) {
+        if (trueCount === this.drSayings.length) {
             this.bingoMessageElement.classList.remove('hidden');
             console.log("Bingo!");
         }
     }
 }
 
-function drInit() {
-    bingo = new Bingo();
+async function drInit() {
+    const bingo = new Bingo(drSayings); // The sayings in bingo_data.js.
     bingo.init(document);
 }
 
