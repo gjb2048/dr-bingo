@@ -54,6 +54,12 @@ Changing the image
 3. And change the filename within the speech marks for the 'background-image' attribute.
 
 
+Versioning
+==========
+
+[Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) is employed.
+
+
 Developed and maintained by
 ===========================
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
