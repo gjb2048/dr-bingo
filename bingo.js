@@ -15,7 +15,6 @@
     along with this program.  If not, see https://www.gnu.org/licenses/.
 */
 
-console.log("Bingo");
 
 /**
  * Bingo class.
@@ -41,7 +40,12 @@ class Bingo {
     /**
      * @type null|Element The element in the markup that shows the current count of sayings said.
      */
-    countMessageElement = null;
+    countElement = null;
+
+    /**
+     * @type null|Element The element in the markup that contains the current count of sayings said.
+     */
+    countContainerElement = null;
 
     /**
      * @type Number|count Current number of sayings said.
@@ -56,8 +60,6 @@ class Bingo {
      * @returns {Bingo} The Bingo instance.
      */
     constructor(sayings) {
-        console.log("Bingo constructor");
-
         this.drSayings = sayings;
     }
 
@@ -67,8 +69,6 @@ class Bingo {
      * @param {element} element The element which contains the bingo markup.
      */
     init(element) {
-        console.log("Bingo init");
-
         const sayingElements = element.querySelectorAll('.saying');
 
         this.sayings = new Array(sayingElements.length);
@@ -77,7 +77,6 @@ class Bingo {
         for (let index = 0; index < sayingElements.length; index++) { 
             this.sayings[index] = {"state": null};
         }
-        console.log("Init Saying state " + JSON.stringify(this.sayings));
 
         this.drSayings.forEach(function(value, index) {
             // Prevent more sayings than we have space for.
@@ -87,13 +86,12 @@ class Bingo {
         }, this);
 
         // Random locations.
-        console.log("Init Saying state pre sort " + JSON.stringify(this.sayings));
         this.sayings.sort(() => Math.random() - 0.5);
-        console.log("Init Saying state post sort" + JSON.stringify(this.sayings));
 
         // Message elements.
         this.bingoMessageElement = document.getElementById('bingo');
-        this.countMessageElement = document.getElementById('count');
+        this.countContainerElement = document.getElementById('count-container');
+        this.countElement = document.getElementById('count');
 
         // Update markup and attach event listener.
         this._sayingClicked = this._sayingClicked.bind(this);
@@ -102,7 +100,6 @@ class Bingo {
                 saying.innerText = "";
             } else {
                 saying.innerText = this.sayings[saying.dataset.pos -1].saying;
-                console.log("Element add event listener " + saying.dataset.pos);
                 saying.addEventListener('click', this._sayingClicked);
             }
         }, this);
@@ -114,13 +111,9 @@ class Bingo {
      * @param {element} saying Saying element.
      */
     _sayingClicked(saying) {
-        console.log("Saying " + saying.target.dataset.pos + " clicked");
-
         // Toggle state.
         this.sayings[saying.target.dataset.pos - 1].state =
             (this.sayings[saying.target.dataset.pos - 1].state !== true);
-
-        console.log("Clicked Saying state " + JSON.stringify(this.sayings));
 
         if (this.sayings[saying.target.dataset.pos - 1].state === true) {
             saying.target.classList.add('said');
@@ -128,20 +121,19 @@ class Bingo {
             // Check bingo.
             this._isBingo();
         } else {
-            console.log("Not bingo :(");
             saying.target.classList.remove('said');
             this.bingoMessageElement.classList.add('hidden');
+            this.countContainerElement.classList.remove('all-said');
             this.count--;
         }
 
-        this.countMessageElement.innerText = this.count;
+        this.countElement.innerText = this.count;
     };
 
     /**
      * Have all of the sayings been said?
      */
     _isBingo() {
-        console.log("isBingo");
         let trueCount = 0;
         this.sayings.forEach(function(saying){
             if (saying.state === true) {
@@ -153,7 +145,7 @@ class Bingo {
 
         if (trueCount === this.drSayings.length) {
             this.bingoMessageElement.classList.remove('hidden');
-            console.log("Bingo!");
+            this.countContainerElement.classList.add('all-said');
         }
     }
 }

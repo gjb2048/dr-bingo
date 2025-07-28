@@ -53,6 +53,20 @@ Changing the image
 
 3. And change the filename within the speech marks for the 'background-image' attribute.
 
+Changing the colours
+====================
+1. In a 'code' friendly editor, edit the file 'bingo.css'/
+2. The colours are defined in the CSS variables:
+
+```
+:root {
+  --dr-main-colour: #009640;
+  --dr-secondary-colour: #E30613;
+}
+```
+
+attributed to the root pseudoselector. The 'main' colour controls the text and table border.
+The 'secondary' colour indicates when a saying has been said / bingo condition.
 
 Versioning
 ==========

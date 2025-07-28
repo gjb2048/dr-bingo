@@ -70,3 +70,8 @@ h2 {
     background-repeat: no-repeat;
     color: var(--dr-secondary-colour);
 }
+
+#bingo,
+#count-container.all-said {
+    color: var(--dr-secondary-colour);
+}
