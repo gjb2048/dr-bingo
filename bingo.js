@@ -17,22 +17,55 @@
 
 console.log("Bingo");
 
+/**
+ * Bingo class.
+ */
 class Bingo {
     
+    /**
+     * @type Array Object array of the saying element data being a state of null
+     * if not used or the saying and its said state (boolean) if it is. 
+     */
     sayings = null;
+
+    /**
+     * @type Array String array of sayings.
+     */
     drSayings = null;
 
+    /**
+     * @type null|Element The element that shows when all of the sayings have been said.
+     */
     bingoMessageElement = null;
+
+    /**
+     * @type null|Element The element in the markup that shows the current count of sayings said.
+     */
     countMessageElement = null;
+
+    /**
+     * @type Number|count Current number of sayings said.
+     */
     count = 0;
 
-    // Init.
+
+    /**
+     * Initialise.
+     * 
+     * @param {array} sayings Array of sayings strings.
+     * @returns {Bingo} The Bingo instance.
+     */
     constructor(sayings) {
         console.log("Bingo constructor");
 
         this.drSayings = sayings;
     }
 
+    /**
+     * Initialse.
+     * 
+     * @param {element} element The element which contains the bingo markup.
+     */
     init(element) {
         console.log("Bingo init");
 
@@ -75,6 +108,11 @@ class Bingo {
         }, this);
     }
 
+    /**
+     * A saying has been clicked
+     * 
+     * @param {element} saying Saying element.
+     */
     _sayingClicked(saying) {
         console.log("Saying " + saying.target.dataset.pos + " clicked");
 
@@ -99,6 +137,9 @@ class Bingo {
         this.countMessageElement.innerText = this.count;
     };
 
+    /**
+     * Have all of the sayings been said?
+     */
     _isBingo() {
         console.log("isBingo");
         let trueCount = 0;
@@ -117,11 +158,15 @@ class Bingo {
     }
 }
 
-async function drInit() {
+/**
+ * Construct and initialise.
+ */
+function drInit() {
     const bingo = new Bingo(drSayings); // The sayings in bingo_data.js.
     bingo.init(document);
 }
 
+// Create and initialise when the document object model has loaded.
 if (document.readyState !== 'loading') {
     drInit();
 } else {

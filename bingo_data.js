@@ -15,6 +15,9 @@
     along with this program.  If not, see https://www.gnu.org/licenses/.
 */
 
+/**
+ * @type Array of sayings strings.
+ */
 const drSayings = [
     "Drive it like you stole it",
     "See it, say it, sort it",
