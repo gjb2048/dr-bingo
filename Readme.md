@@ -55,7 +55,7 @@ Changing the image
 
 Changing the colours
 ====================
-1. In a 'code' friendly editor, edit the file 'bingo.css'/
+1. In a 'code' friendly editor, edit the file 'bingo.css'.
 2. The colours are defined in the CSS variables:
 
 ```
