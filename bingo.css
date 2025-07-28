@@ -75,3 +75,17 @@ h2 {
 #count-container.all-said {
     color: var(--dr-secondary-colour);
 }
+
+@media (prefers-color-scheme: dark) {
+    /* CSS that applies to dark mode, only available on newer browsers */
+    body {
+        background: #0E0E0E;
+        color: #FFFFFF;
+    }
+
+    .said {
+        /* Supported on modern browsers to darken the background image */
+        background-color: #0E0E0E60;
+        background-blend-mode: darken;
+    }
+}
