@@ -17,7 +17,23 @@
 
 :root {
   --dr-main-colour: #009640;
-  --dr-secondary-colour: #E30613;
+  --dr-secondary-colour: #e30613;
+  --dr-background-colour: #fff;
+  --dr-background-colour-with-opacity: #ffffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    /* CSS that applies to dark mode, only available on newer browsers */
+    :root {
+        --dr-main-colour: #fff;
+        --dr-secondary-colour: #E30613;
+        --dr-background-colour: #0e0e0e;
+        --dr-background-colour-with-opacity: #0e0e0e60;
+    }
+
+    .said {
+        background-blend-mode: darken;
+    }
 }
 
 @font-face {
@@ -28,6 +44,8 @@
 }
 
 body {
+    background-color: var(--dr-background-colour);
+    color: var(--dr-main-colour);
     font-family: 'railwayregular';
 }
 
@@ -65,6 +83,7 @@ h2 {
 }
 
 .said {
+    background-color: var(--dr-background-colour-with-opacity);
     background-image: url("said.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -74,18 +93,4 @@ h2 {
 #bingo,
 #count-container.all-said {
     color: var(--dr-secondary-colour);
-}
-
-@media (prefers-color-scheme: dark) {
-    /* CSS that applies to dark mode, only available on newer browsers */
-    body {
-        background: #0E0E0E;
-        color: #FFFFFF;
-    }
-
-    .said {
-        /* Supported on modern browsers to darken the background image */
-        background-color: #0E0E0E60;
-        background-blend-mode: darken;
-    }
 }
