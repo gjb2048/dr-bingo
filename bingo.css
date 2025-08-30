@@ -26,7 +26,7 @@
     /* CSS that applies to dark mode, only available on newer browsers */
     :root {
         --dr-main-colour: #fff;
-        --dr-secondary-colour: #E30613;
+        --dr-secondary-colour: #FF1522;
         --dr-background-colour: #0e0e0e;
         --dr-background-colour-with-opacity: #0e0e0e60;
     }
