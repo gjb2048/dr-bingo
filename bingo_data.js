@@ -26,5 +26,9 @@ const drSayings = [
     "Brake step three",
     "Mum rail",
     "Lets play Locomotive Livery Location",
-    "All views are my own"
+    "All views are my own",
+    "Emotional, dam it!",
+    "Check out the Discord",
+    "The third number on the list is",
+    "Lets see who we have in tonight"
 ];
