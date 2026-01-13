@@ -1,0 +1,117 @@
+<!doctype html>
+<!--
+    Copyright (C) 2025 G J Barnard
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see https://www.gnu.org/licenses/.
+    
+    Please see separate licences for the Bootstrap Grid (Bootstrap_MIT_LICENSE.txt)
+    and Railway font (Railway_SIL_Open_Font_License.txt).
+    
+    The image 'said.png' is my copyright, you are permitted to use it within the
+    context of this web page.  Or change it for your own image - see Readme.md.
+-->
+<html>
+<head>
+    <title>Dad Rail Sayings Bingo</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="bingo.css">
+    <!-- Note: Could use modules but that forces server hosting even for localhost because of CORS. -->
+    <script src="bingo_data.js"></script>
+    <script src="bingo.js"></script>
+    <meta name="description" content="Web page bingo for when the given saying is said by 'Dad Rail'." />
+    <meta name="version" content="V1.0.0-rc" />
+</head>
+<body>
+    <h1>Dad Rail Sayings Bingo</h1>
+    <div class="bingo container">
+        <!-- 3x8, 4x6, 6x4 grid depending on window resolution -->
+        <div class="row">
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="1">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="2">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="3">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="4">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="5">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="6">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="7">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="8">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="9">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="10">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="11">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="12">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="13">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="14">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="15">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="16">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="17">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="18">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="19">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="20">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="21">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="22">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="23">
+                Placeholder
+            </div>
+            <div class="col-4 col-sm-3 col-md-2 saying" data-pos="24">
+                Placeholder
+            </div>
+        </div>
+    </div>
+    <h1 id="bingo" class="hidden">Off to see the manager!</h1>
+    <h2 id="count-container">Count <span id="count">0</span></h2>
+</body>
+</html>
