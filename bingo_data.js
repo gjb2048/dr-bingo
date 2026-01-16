@@ -30,5 +30,9 @@ const drSayings = [
     "Emotional, dam it!",
     "Check out the Discord",
     "The third number on the list is",
-    "Lets see who we have in tonight"
+    "Lets see who we have in tonight",
+    "Flying money pit",
+    "I'm taking that",
+    "Six foot from the buffer stops",
+    "Right way, wrong way and the railway"
 ];
