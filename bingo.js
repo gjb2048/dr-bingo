@@ -137,6 +137,8 @@ class Bingo {
         this.countContainerElement = document.getElementById('count-container');
         this.countElement = document.getElementById('count');
 
+        this.countContainerElement.classList.remove('d-none');
+
         // Update markup and attach event listener.
         this._sayingClicked = this._sayingClicked.bind(this);
         sayingElements.forEach(function(saying) {
@@ -166,7 +168,7 @@ class Bingo {
             this._isBingo();
         } else {
             saying.target.classList.remove('said');
-            this.bingoMessageElement.classList.add('hidden');
+            this.bingoMessageElement.classList.add('d-none');
             this.countContainerElement.classList.remove('all-said');
             this.count--;
         }
@@ -188,7 +190,7 @@ class Bingo {
         this.count = trueCount;
 
         if (trueCount === this.drSayings.length) {
-            this.bingoMessageElement.classList.remove('hidden');
+            this.bingoMessageElement.classList.remove('d-none');
             this.countContainerElement.classList.add('all-said');
         }
     }

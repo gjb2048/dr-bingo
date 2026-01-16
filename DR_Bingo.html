@@ -37,13 +37,16 @@
     <div id="choice" class="container">
         <div class="row">
             <div id="gridChoice" class="col-12 justify-content-center">
-                <button id="b16" type="button">16</button>
-                <button id="b24" type="button">24</button>
+                <h2>Choose grid size:</h2>
+                <div class="choiceButtons">
+                    <button id="b16" class="choiceButton" type="button">16</button>
+                    <button id="b24" class="choiceButton" type="button">24</button>
+                </div>
             </div>
         </div>
     </div>
     <div id="16" class="bingo container d-none">
-        <!-- 4x6, 6x4 grid depending on window resolution -->
+        <!-- 3x6, 4x4 grid depending on window resolution -->
         <div class="row">
             <div class="col-4 col-md-3 saying" data-pos="1">
                 Placeholder
@@ -172,7 +175,7 @@
             </div>
         </div>
     </div>
-    <h1 id="bingo" class="hidden">Off to see the manager!</h1>
-    <h2 id="count-container">Count <span id="count">0</span></h2>
+    <h1 id="bingo" class="d-none">Off to see the manager!</h1>
+    <h2 id="count-container" class="d-none">Count <span id="count">0</span></h2>
 </body>
 </html>
