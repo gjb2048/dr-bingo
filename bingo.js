@@ -151,13 +151,16 @@ class Bingo {
         // Random sayings.
         this.drSayings.sort(() => Math.random() - 0.5);
 
-        /// Populate sayings.
+        // Populate sayings.
         this.drSayings.forEach(function(value, index) {
             // Prevent more sayings than we have space for.
             if (index < sayingElements.length) {
                 this.sayings[index] = {"saying": value, "state": false};
             }
         }, this);
+
+        // Random locations.
+        this.sayings.sort(() => Math.random() - 0.5);
 
         // Know how many sayings are used for the 'is bingo!' test.
         if (sayingElements.length > this.drSayings.length) {
