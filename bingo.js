@@ -52,6 +52,11 @@ class Bingo {
      */
     count = 0;
 
+    /**
+     * @type Number|sayingsUsedCount Number of sayings in the grid.
+     */
+    sayingsUsedCount = 0;
+
 
     /**
      * Initialise.
@@ -67,8 +72,12 @@ class Bingo {
      * Init.
      */
     init() {
+        const b8 = document.getElementById('b8');
         const b16 = document.getElementById('b16');
         const b24 = document.getElementById('b24');
+
+        this._b8 = this._b8.bind(this);
+        b8.addEventListener('click', this._b8);
 
         this._b16 = this._b16.bind(this);
         b16.addEventListener('click', this._b16);
@@ -78,18 +87,25 @@ class Bingo {
     }
 
     /**
+     * Set a grid of 8 sayings.
+     */
+    _b8() {
+        const useContainer = document.getElementById('8');
+        const removeContainer1 = document.getElementById('16');
+        const removeContainer2 = document.getElementById('24');
+
+        this._bHelper(useContainer, removeContainer1, removeContainer2);
+    }
+
+    /**
      * Set a grid of 16 sayings.
      */
     _b16() {
         const useContainer = document.getElementById('16');
-        const removeContainer = document.getElementById('24');
-        const buttonContainer = document.getElementById('gridChoice');
+        const removeContainer1 = document.getElementById('8');
+        const removeContainer2 = document.getElementById('24');
 
-        useContainer.classList.remove('d-none');
-        removeContainer.remove();
-        buttonContainer.remove();
-
-        this.sayingsInit(document);
+        this._bHelper(useContainer, removeContainer1, removeContainer2);
     }
 
     /**
@@ -97,11 +113,21 @@ class Bingo {
      */
     _b24() {
         const useContainer = document.getElementById('24');
-        const removeContainer = document.getElementById('16');
+        const removeContainer1 = document.getElementById('8');
+        const removeContainer2 = document.getElementById('16');
+
+        this._bHelper(useContainer, removeContainer1, removeContainer2);
+    }
+
+    /**
+     * Set a grid of sayings helper.
+     */
+    _bHelper(useContainer, removeContainer1, removeContainer2) {
         const buttonContainer = document.getElementById('gridChoice');
 
         useContainer.classList.remove('d-none');
-        removeContainer.remove();
+        removeContainer1.remove();
+        removeContainer2.remove();
         buttonContainer.remove();
 
         this.sayingsInit(document);
@@ -112,16 +138,20 @@ class Bingo {
      * 
      * @param {element} element The element which contains the bingo markup.
      */
-    sayingsInit(element) {
+    sayingsInit(element, gridCount) {
         const sayingElements = element.querySelectorAll('.saying');
 
         this.sayings = new Array(sayingElements.length);
 
-        // Populate.
+        // Init sayings elements.
         for (let index = 0; index < sayingElements.length; index++) { 
             this.sayings[index] = {"state": null};
         }
 
+        // Random sayings.
+        this.drSayings.sort(() => Math.random() - 0.5);
+
+        /// Populate sayings.
         this.drSayings.forEach(function(value, index) {
             // Prevent more sayings than we have space for.
             if (index < sayingElements.length) {
@@ -129,8 +159,12 @@ class Bingo {
             }
         }, this);
 
-        // Random locations.
-        this.sayings.sort(() => Math.random() - 0.5);
+        // Know how many sayings are used for the 'is bingo!' test.
+        if (sayingElements.length > this.drSayings.length) {
+            this.sayingsUsedCount = this.drSayings.length;
+        } else {
+            this.sayingsUsedCount = sayingElements.length;
+        }
 
         // Message elements.
         this.bingoMessageElement = document.getElementById('bingo');
@@ -189,7 +223,7 @@ class Bingo {
 
         this.count = trueCount;
 
-        if (trueCount === this.drSayings.length) {
+        if (trueCount === this.sayingsUsedCount) {
             this.bingoMessageElement.classList.remove('d-none');
             this.countContainerElement.classList.add('all-said');
         }

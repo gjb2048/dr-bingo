@@ -1,6 +1,11 @@
 History
 =============
 
+Version 1.1.0rc - 16/01/2026
+----------------------------
+1. More sayings.
+2. Choice of grid size.
+
 Version 1.0.2rc - 30/08/2025
 ----------------------------
 1. Change secondary colour to '#FF1522' in dark mode, thanks to https://github.com/00p513-dev for the suggestion - #1.
