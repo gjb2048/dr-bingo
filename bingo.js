@@ -64,11 +64,55 @@ class Bingo {
     }
 
     /**
-     * Initialse.
+     * Init.
+     */
+    init() {
+        const b16 = document.getElementById('b16');
+        const b24 = document.getElementById('b24');
+
+        this._b16 = this._b16.bind(this);
+        b16.addEventListener('click', this._b16);
+
+        this._b24 = this._b24.bind(this);
+        b24.addEventListener('click', this._b24);
+    }
+
+    /**
+     * Set a grid of 16 sayings.
+     */
+    _b16() {
+        const useContainer = document.getElementById('16');
+        const removeContainer = document.getElementById('24');
+        const buttonContainer = document.getElementById('gridChoice');
+
+        useContainer.classList.remove('d-none');
+        removeContainer.remove();
+        buttonContainer.remove();
+
+        this.sayingsInit(document);
+    }
+
+    /**
+     * Set a grid of 24 sayings.
+     */
+    _b24() {
+        const useContainer = document.getElementById('24');
+        const removeContainer = document.getElementById('16');
+        const buttonContainer = document.getElementById('gridChoice');
+
+        useContainer.classList.remove('d-none');
+        removeContainer.remove();
+        buttonContainer.remove();
+
+        this.sayingsInit(document);
+    }
+
+    /**
+     * Initialse sayings.
      * 
      * @param {element} element The element which contains the bingo markup.
      */
-    init(element) {
+    sayingsInit(element) {
         const sayingElements = element.querySelectorAll('.saying');
 
         this.sayings = new Array(sayingElements.length);
@@ -155,7 +199,7 @@ class Bingo {
  */
 function drInit() {
     const bingo = new Bingo(drSayings); // The sayings in bingo_data.js.
-    bingo.init(document);
+    bingo.init();
 }
 
 // Create and initialise when the document object model has loaded.
